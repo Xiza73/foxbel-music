@@ -1,0 +1,76 @@
+@import '../../index.scss';
+
+.control_bar--container {
+    display: flex;
+    justify-content: space-between;
+    .control_bar--music {
+        display: flex;
+        .music--cover {
+            width: $w-footer;
+            height: $w-footer;
+            background-color: black;
+        }
+        .music--info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: $w-footer;
+            padding: 0 5px;
+            text-align: center;
+            h1 {
+                @include sm-bold-qs;
+            }
+            p {
+                @include xs-regular-qs;
+            }
+        }
+    }
+    .control_bar--controls {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: calc(#{2*$w-footer} - 20px);
+        .fa-play-circle {
+            font-size: 30px;
+            color: $dark-red-secondary;
+        }
+        .fa-step-backward, .fa-step-forward {
+            font-size: 15px;
+            color: $dark-red-secondary;
+        }
+    }
+    .control_bar--volume {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 6px 0 12px;
+        width: #{2*$w-footer};
+        .volume--bar {
+            display: flex;
+            align-items: center;
+            width: 50px;
+            .bar {
+                width: 40px;
+                height: 4px;
+                background-color: #FFF;
+                border-radius: 5px;
+                position: absolute;
+                .dot{
+                    position: relative;
+                    width: 10px;
+                    height: 10px;
+                    background-color: #FFF;
+                    border: 1px thin #000;
+                    border-radius: 20px;
+                    top: calc(0px - 3px);
+                    left: calc(10px - 0px);
+                }
+            }
+        }
+        i {
+            font-size: 15px;
+            color: #FFF;
+        }
+    }
+}
