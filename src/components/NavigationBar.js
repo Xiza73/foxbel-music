@@ -1,9 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 import './sass/navigation-bar.scss';
 
 class NavigationBar extends React.Component {
-    
+    constructor(props){
+        super(props);
+
+        this.state = {
+            loading: true,
+            error: null,
+            data: []
+        };
+    }
+
+    componentDidMount(){
+        this.fetchPlaylists();
+    }
+
     render(){
         return(
             <React.Fragment>
@@ -11,21 +26,40 @@ class NavigationBar extends React.Component {
                     <div className="foxbel_music-icon"></div>
                     <div className="foxbel_option--container">
                         <h1>Mi Librería</h1>
-                        <p>Recientes</p>
-                        <p>Artistas</p>
-                        <p>Álbums</p>
-                        <p>Canciones</p>
-                        <p>Estaciones</p>
+                        <Link to="/recent"><p>Recientes</p></Link>
+                        <Link to="/artist"><p>Artistas</p></Link>
+                        <Link to="/album"><p>Álbums</p></Link>
+                        <Link to="/track"><p>Canciones</p></Link>
+                        <Link to="/station"><p>Estaciones</p></Link>
                     </div>
                     <div className="foxbel_option--container">
                         <h1>Playlist</h1>
-                        <p>Metal</p>
-                        <p>Rock</p>
-                        <p>Pop</p>
+                        {this.state.data.map(playlist => (
+                            <Link to='/catalog'><p>{playlist}</p></Link>
+                        ))}
                     </div>
                 </div>
             </React.Fragment>
         );
+    }
+
+    fetchPlaylists = async () => {
+        try{
+            const response = await fetch(`https://api.deezer.com/user/${this.props.user}/playlists`);
+            const data = await response.json();
+            console.log(data)
+            
+            this.setState({
+                loading: false,
+                data
+            })
+        }catch(error){
+            this.setState({
+                loading: false,
+                error
+            })
+            console.log(error)
+        }
     }
 }
 
