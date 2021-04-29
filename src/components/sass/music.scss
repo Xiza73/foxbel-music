@@ -1,0 +1,57 @@
+@import '../../index.scss';
+
+$w-music: 55px;
+
+.music_container {
+    width: $w-music;
+    height: auto;
+    margin: 6px;
+    .music--cover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: #{0.3*$w-music};
+        width: 100%;
+        height: $w-music;
+        color: white;
+        background-color: black;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .music--details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: $w-music;
+        padding: 4px 0;
+        height: #{0.5*$w-music};
+        text-align: center;
+        h1 {
+            height: 14px;
+            overflow: hidden;
+            @include sm-bold-qs;
+        }
+        p {
+            overflow: hidden;
+            @include xs-regular-qs
+        }
+    }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    $w-music: 75px;
+
+    .music_container {
+        width: $w-music;
+        margin: 10px;
+        .music--cover {
+            font-size: #{0.3*$w-music};
+            height: $w-music;
+        }
+        .music--details {
+            width: $w-music;
+            height: #{0.5*$w-music};
+        }
+    }
+}

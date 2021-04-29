@@ -8,7 +8,6 @@
         width: 6rem;
         height: 5rem;
         margin: 0 auto 5px;
-        //border: 1px solid black;
         background: url('./../../assets/icons/foxbel-music-icon.png');
         background-size: cover;
         background-position: center;
@@ -28,3 +27,16 @@
     }
 }
 
+@media (min-width: $breakpoint-tablet) {
+    .foxbel--container {
+        .foxbel_music-icon {
+            width: 13rem;
+            height: 3rem;
+            margin: 0 auto 5px;
+            background: url('./../../assets/icons/foxbel-music.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+}

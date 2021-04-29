@@ -10,9 +10,12 @@ class SearchBar extends React.Component {
                 <div className="search_container">
                     <div className="search_input">
                         <input type="text" placeholder="Buscar..."/>
-                        <i class="fas fa-search"></i>
+                        <i className="fas fa-search"></i>
                     </div>
-                    <i class="fas fa-user"></i>
+                    <div className="user_data">
+                        <i className="fas fa-user"></i>
+                        <p>@Xiza73</p>
+                    </div>
                 </div>
             </React.Fragment>
         );

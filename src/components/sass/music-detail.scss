@@ -1,0 +1,129 @@
+@import '../../index.scss';
+
+$w-music: 256px;
+$w-detail: 300px;
+
+.music__detail--container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 310px;
+    height: auto;
+    margin: 0 auto 10px;
+    .music--cover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(100vw - #{$w-music});
+        max-width: 110px;
+        height: calc(100vw - #{$w-music});
+        max-height: 110px;
+        font-size: 20px;
+        color: white;
+        background-color: black;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .music--details {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        width: calc(100vw - #{$w-detail});
+        max-width: 200px;
+        padding: 6px;
+        background-color: #A70000B2;
+        h1 {
+            @include lg-bold-white;
+        }
+        .parrafs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+            p {
+                @include sm-regular-white;
+            }
+            .p1 {
+                margin-right: 8px;
+            }
+            .p2 {
+                color: #662323;
+            }
+        }
+        .details {
+            display: none;
+            @include xs-regular-white-lineheight-20-paragraph;
+        }
+        .buttons {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            .play_button {
+                @include reset-button;
+                width: 51px;
+                mix-blend-mode: normal;
+                border-radius: 100px;
+                @include sm-regular-white;
+                background-color: $red-principal;
+            }
+            .follow_button {
+                @include reset-button;
+                width: 51px;
+                border: 1px solid #EB5757;
+                box-sizing: border-box;
+                border-radius: 100px;
+                margin: 0 5px;
+                @include sm-regular-white;
+                color: $red-principal;
+            }
+            .more_button {
+                display: flex;
+                justify-content: space-between;
+                width: 10px;
+                font-size: 2px;
+                color: white;
+            }
+        }
+    }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    $w-music: 256px;
+    $w-detail: 300px;
+
+    .music__detail--container {
+        max-width: 350px;
+        .music--cover {
+            width: calc(100vw - #{$w-music});
+            max-width: 130px;
+            height: calc(100vw - #{$w-music});
+            max-height: 130px;
+        }
+        .music--details {
+            width: calc(100vw - #{$w-detail});
+            max-width: 220px;
+            padding: 8px;
+            .details {
+                display: inherit !important; 
+            }
+            .buttons {
+                .play_button {
+                    width: 65px;
+                    height: 16px;
+                }
+                .follow_button {
+                    width: 65px;
+                    height: 16px;
+                    margin: 0 10px;
+                }
+                .more_button {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 10px;
+                    font-size: 2px;
+                    color: white;
+                }
+            }
+        }
+
+    }
+}

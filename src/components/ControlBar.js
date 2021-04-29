@@ -16,9 +16,9 @@ class ControlBar extends React.Component {
                         </div>
                     </div>
                     <div className="control_bar--controls">
-                        <i class="fas fa-step-backward"></i>
-                        <i class="fas fa-play-circle"></i>
-                        <i class="fas fa-step-forward"></i>
+                        <i className="fas fa-step-backward"></i>
+                        <i className="fas fa-play-circle"></i>
+                        <i className="fas fa-step-forward"></i>
                     </div>
                     <div className="control_bar--volume">
                         <div className="volume--bar">
@@ -26,7 +26,7 @@ class ControlBar extends React.Component {
                                 <div className="dot"></div>
                             </div>
                         </div>
-                        <i class="fas fa-volume-up"></i>
+                        <i className="fas fa-volume-up"></i>
                     </div>
                 </div>
             </React.Fragment>

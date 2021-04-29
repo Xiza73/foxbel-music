@@ -9,6 +9,9 @@
             width: $w-footer;
             height: $w-footer;
             background-color: black;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         .music--info {
             display: flex;
@@ -20,9 +23,11 @@
             text-align: center;
             h1 {
                 @include sm-bold-qs;
+                color: #FFFFFF;
             }
             p {
                 @include xs-regular-qs;
+                color: #FFFFFF;
             }
         }
     }
@@ -73,4 +78,33 @@
             color: #FFF;
         }
     }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    $w-footer: 6rem;
+
+    .control_bar--container {
+        .control_bar--music {
+            .music--cover {
+                width: $w-footer;
+                height: $w-footer;
+            }
+            .music--info {
+                width: $w-footer;
+            }
+        }
+        .control_bar--controls {
+            width: calc(#{2*$w-footer} - 20px);
+        }
+        .control_bar--volume {
+            width: #{2*$w-footer};
+            padding: 0 6px 0 20px;
+            .volume--bar {
+                .bar {
+                    width: 50px;
+                }
+            }
+        }
+    }
+    
 }

@@ -13,51 +13,13 @@ $dark-red-secondary: #662323;
 $light-red: #FF7676;
 $gray: #828282;
 $soft-gray: #BDBDBD;
+
 $w-sidebar: 9rem;
 $w-footer: 5rem;
+$w-main: calc(100vw - #{$w-sidebar});
 
-@mixin md-regular-white {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 0.9rem;
-    line-height: 1.2rem;
-    color: #C4C4C4;
-}
-@mixin sm-regular-white-sm {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 0.8rem;
-    line-height: 0.9rem;
-    color: #C4C4C4;
-}
-@mixin xs-regular-white-lineheight-20-paragraph {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 0.6rem;
-    line-height: 1rem;
-    color: #C4C4C4;
-}
-@mixin xs-regular-qs {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 0.6rem;
-    line-height: 0.8rem;
-    color: #C4C4C4;
-}
-@mixin lg-bold-white {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1rem;
-    line-height: 1.6rem;
-    color: #C4C4C4;
-}
-@mixin sm-bold-qs {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 0.8rem;
-    line-height: 1.4rem;
-    color: #C4C4C4;
-}
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1042px;
 
 #root {
     width: 100vw;
@@ -92,6 +54,7 @@ $w-footer: 5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            width: $w-main;
             height: calc(100vh -  #{$w-footer});
             nav {
                 width: 100%;
@@ -122,8 +85,115 @@ $w-footer: 5rem;
     }
 }
 
-.prueba {
-	width: 80%;
-	height: 200vh;
-	background-color: sienna;
+
+$lh-xs: 0.9rem;
+@mixin md-regular-white {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    color: #C4C4C4;
+    @media only screen and (min-width: 768px) {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+    }
+}
+@mixin sm-regular-white {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: #C4C4C4;
+    @media only screen and (min-width: 768px) {
+        font-size: 1rem;
+        line-height: 1.2rem;
+    }
+}
+@mixin xs-regular-white-lineheight-20-paragraph {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.6rem;
+    line-height: 0.9rem;
+    color: #C4C4C4;
+    @media only screen and (min-width: 768px) {
+        font-size: 0.8rem;
+        line-height: 1.1rem;
+    }
+}
+@mixin xs-regular-qs {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.6rem;
+    line-height: 0.9rem;
+    color: #828282;
+    @media only screen and (min-width: 768px) {
+        font-size: 0.8rem;
+        line-height: 1.1rem;
+    }
+}
+@mixin lg-bold-white {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    color: #C4C4C4;
+    @media only screen and (min-width: 768px) {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+    }
+}
+@mixin sm-bold-qs {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: #555555;
+    @media only screen and (min-width: 768px) {
+        font-size: 1rem;
+        line-height: 1.2rem;
+    }
+}
+@mixin reset-button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+}
+
+@media (min-width: $breakpoint-tablet) {
+    $w-sidebar: 17rem;
+    $w-footer: 6rem;
+    $w-main: calc(100vw - #{$w-sidebar});
+
+    #root{
+        .upper_content {
+            .sidebar {
+                width: $w-sidebar;
+                height: calc(100vh - #{$w-footer});
+            }
+            .main_content {
+                width: $w-main;
+                height: calc(100vh -  #{$w-footer});
+            }
+        }
+        footer {
+            height: $w-footer;
+        }
+    }
+}
+
+@media only screen and (min-width: $breakpoint-desktop) {
+    
 }
