@@ -6,24 +6,64 @@ import MusicDetail from './MusicDetail';
 import './sass/catalog.scss';
 
 class Catalog extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            loading: true,
+            error: null,
+            data: []
+        };
+    }
     
+    componentDidMount(){
+        this.fetchTracks();
+    }
+
     render(){
+        if(!this.props.id) return(
+            <p>Selecciona un álbum</p>
+        )
         return(
             <React.Fragment>
                 <div className="catalog_main--container">
-                    <MusicDetail></MusicDetail>
+                    <MusicDetail/>
                     <p>Resultados</p>
                     <div className="catalog_musics--container">
-                        <Music title={'21'} singer={'Adele'}></Music>
-                        <Music title={'When We All Fall Asleep, Where Do We Go?'} singer={'Michael Jackson'}></Music>
-                        <Music title={'Who You Are'} singer={'Jessie J'}></Music>
-                        <Music title={'The Fear'} singer={'Lily Allen'}></Music>
-                        <Music title={'Currents'} singer={'Time Impala'}></Music>
-                        <Music title={'22'} singer={'Adele'}></Music>
+                        {
+                            this.state.data.map(track => (
+                                <div key={track.id}>
+                                    <Music 
+                                        id={track.id}
+                                        title={track.title}
+                                        singer={track.artist.name}
+                                        preview={track.preview}
+                                        cover={track.album.cover}
+                                    />
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </React.Fragment>
         );
+    }
+
+    fetchTracks = async () => {
+        try{
+            const response = await fetch(`https://api.deezer.com/playlist/${this.props.id}`);
+            const data = await response.json();
+            this.setState({
+                loading: false,
+                data: data.tracks.data
+            })
+        }catch(error){
+            this.setState({
+                loading: false,
+                error
+            })
+            console.log(error)
+        }
     }
 }
 

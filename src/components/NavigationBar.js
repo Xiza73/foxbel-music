@@ -11,7 +11,8 @@ class NavigationBar extends React.Component {
         this.state = {
             loading: true,
             error: null,
-            data: []
+            data: [],
+            catalog_key: "123"
         };
     }
 
@@ -34,24 +35,44 @@ class NavigationBar extends React.Component {
                     </div>
                     <div className="foxbel_option--container">
                         <h1>Playlist</h1>
-                        {this.state.data.map(playlist => (
-                            <Link to='/catalog'><p>{playlist}</p></Link>
-                        ))}
+                        {
+                            this.state.data.map(playlist => (
+                                <div key={playlist.id} onClick={this.reload}>
+                                    <Link 
+                                        to={{
+                                            pathname: "/catalog",
+                                            id: playlist.id,
+                                            key: this.state.catalog_key
+                                        }}
+                                    >
+                                        <p>{playlist.title}</p>
+                                    </Link>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </React.Fragment>
         );
     }
 
+    reload = () => {
+        this.setState({
+            catalog_key: Math.random().toString()
+        })
+    }
+
     fetchPlaylists = async () => {
         try{
             const response = await fetch(`https://api.deezer.com/user/${this.props.user}/playlists`);
-            const data = await response.json();
-            console.log(data)
-            
+            const d = await response.json();
+            const data = []
+            for(const playlist in d.data){
+                data.push(d.data[playlist])
+            }
             this.setState({
                 loading: false,
-                data
+                data: data
             })
         }catch(error){
             this.setState({

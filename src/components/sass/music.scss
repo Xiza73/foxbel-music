@@ -14,10 +14,13 @@ $w-music: 55px;
         width: 100%;
         height: $w-music;
         color: white;
-        background-color: black;
+        //background-color: black;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        i {
+            cursor: pointer;
+        }
     }
     .music--details {
         display: flex;

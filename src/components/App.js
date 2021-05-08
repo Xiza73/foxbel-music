@@ -13,8 +13,8 @@ function App(){
                 <Switch>
                     <Route exact path="/">
                         <Redirect to="/catalog" />
-                    </Route>
-                    <Route exact path="/catalog" component={CatalogContainer}/>
+                    </Route> 
+                    <Route exact path="/catalog" component={(props) => <CatalogContainer {...props}/>} />
                     <Route component={NotFound} />
                 </Switch>
             </Layout>

@@ -23,6 +23,9 @@ $w-detail: 300px;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        i {
+            cursor: pointer;
+        }
     }
     .music--details {
         flex-grow: 1;
