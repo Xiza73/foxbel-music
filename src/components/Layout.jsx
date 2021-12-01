@@ -6,15 +6,13 @@ import NavigationBar from './NavigationBar';
 import SearchBar from './SearchBar';
 
 class Layout extends React.Component{
-    constructor(props){
-        super(props);
-
-        this.state = {
-            user: "2529",
-        };
-    }
-
     render(){
+        if (!localStorage.getItem("token")) 
+            return (
+                <React.Fragment>
+                    {this.props.children}
+                </React.Fragment>
+            ) 
         return (
             <React.Fragment>
                 <div className="upper_content">
