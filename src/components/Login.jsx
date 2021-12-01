@@ -9,13 +9,16 @@ export default class Login extends Component {
     this.state = {
       code: qs.parse(this.props.location.search, { ignoreQueryPrefix: true })
         .code,
+      app_id: '516102',
+      secret: '3206a4dde5e68a5292a512c665147824',
+      redirect: 'http://localhost:3000/login'
     };
   }
   componentDidMount() {
     console.log(this.state.code);
     if (!this.state.code) {
       window.location.assign(
-        "https://connect.deezer.com/oauth/auth.php?app_id=516102&redirect_uri=http://localhost:3000/login&perms=basic_access,email"
+        `https://connect.deezer.com/oauth/auth.php?app_id=${this.state.app_id}&redirect_uri=${this.state.redirect}&perms=basic_access,email`
       );
       return;
     }
@@ -27,7 +30,7 @@ export default class Login extends Component {
 
   getToken = async (code) => {
     try {
-      const uri = `https://connect.deezer.com/oauth/access_token.php?app_id=516102&secret=3206a4dde5e68a5292a512c665147824&code=${code}&output=json`;
+      const uri = `https://connect.deezer.com/oauth/access_token.php?app_id=${this.state.app_id}&secret=${this.state.secret}&code=${code}&output=json`;
       /*const options = {
           body: "body",
           cors: "no-cors"
@@ -41,8 +44,8 @@ export default class Login extends Component {
           "Content-Type": "application/json",
         },
       });
-      const r = await response.access_token
-      console.log(response)
+      const r = await response.access_token;
+      console.log(response);
       console.log(r);
       //console.log(uri)
 
